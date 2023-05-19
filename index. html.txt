@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Scientific Calculator</title>
+    <style>
+        .calculator {
+            width: 300px;
+            padding: 10px;
+            background-color: #f4f4f4;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .result {
+            margin-bottom: 10px;
+            padding: 5px;
+            background-color: #fff;
+            text-align: right;
+            font-size: 18px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 5px;
+        }
+
+        .button {
+            padding: 10px;
+            background-color: #ddd;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .button:hover {
+            background-color: #ccc;
+        }
+
+        .equal-button {
+            grid-column: span 2;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <div class="result" id="result">0</div>
+        <div class="buttons">
+            <button class="button" onclick="clearResult()">C</button>
+            <button class="button" onclick="deleteLastCharacter()">&#9003;</button>
+            <button class="button" onclick="appendCharacter('/')">/</button>
+            <button class="button" onclick="appendCharacter('*')">*</button>
+            <button class="button" onclick="appendCharacter('7')">7</button>
+            <button class="button" onclick="appendCharacter('8')">8</button>
+            <button class="button" onclick="appendCharacter('9')">9</button>
+            <button class="button" onclick="appendCharacter('-')">-</button>
+            <button class="button" onclick="appendCharacter('4')">4</button>
+            <button class="button" onclick="appendCharacter('5')">5</button>
+            <button class="button" onclick="appendCharacter('6')">6</button>
+            <button class="button" onclick="appendCharacter('+')">+</button>
+            <button class="button" onclick="appendCharacter('1')">1</button>
+            <button class="button" onclick="appendCharacter('2')">2</button>
+            <button class="button" onclick="appendCharacter('3')">3</button>
+            <button class="button equal-button" onclick="calculate()">=</button>
+            <button class="button" onclick="appendCharacter('0')">0</button>
+            <button class="button" onclick="appendCharacter('.')">.</button>
+            <button class="button" onclick="appendCharacter('Math.PI')">π</button>
+            <button class="button" onclick="appendCharacter('Math.sqrt(')">√</button>
+        </div>
+    </div>
+
+    <script>
+        function clearResult() {
+            document.getElementById("result").textContent = "0";
+        }
+
+        function deleteLastCharacter() {
+            let result = document.getElementById("result").textContent;
+            result = result.slice(0, -1);
+            document.getElementById("result").textContent = result;
+        }
+
+        function appendCharacter(character) {
+            let result = document.getElementById("result").textContent;
+            document.getElementById("result").textContent = result === "0" ? character : result + character;
+        }
+
+        function calculate() {
+            let
